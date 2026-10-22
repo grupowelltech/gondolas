@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Panfletos de Gôndola - WellFarma</title>
+  
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Loader da Fonte Amsi Pro Ultra -->
+  <script src="assets/font_amsi.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="top-bar">
+    <div class="brand-wrapper">
+      <div class="logo-badge" title="WellFarma">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 10.5H13.5V5C13.5 4.17 12.83 3.5 12 3.5C11.17 3.5 10.5 4.17 10.5 5V10.5H5C4.17 10.5 3.5 11.17 3.5 12C3.5 12.83 4.17 13.5 5 13.5H10.5V19C10.5 19.83 11.17 20.5 12 20.5C12.83 20.5 13.5 19.83 13.5 19V13.5H19C19.83 13.5 20.5 12.83 20.5 12C20.5 11.17 19.83 10.5 19 10.5Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <h1>
+          Link Gôndolas • WellFarma
+          <span class="badge-cmyk" style="background: linear-gradient(90deg, #008B99, #00C4D6); text-shadow: none;" title="Modo de cores original preservado">Cores Originais (100% Fiéis)</span>
+        </h1>
+        <p>Gerador de cartazes e panfletos de gôndola • Fonte: Amsi Pro Ultra</p>
+      </div>
+    </div>
+    
+    <div class="top-actions">
+      <button class="quick-btn" id="btnPrint" title="Imprimir diretamente do navegador">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Imprimir
+      </button>
+      <button class="quick-btn" id="btnDownloadPng" title="Baixar imagem em formato PNG alta definição">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+        Salvar PNG HD
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Grid Container -->
+  <main class="app-container">
+    
+    <!-- Left Column: Controls and Customization -->
+    <aside class="sidebar-panel">
+      
+      <!-- Card: Dados do Panfleto -->
+      <section class="card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            Textos do Panfleto
+          </h2>
+          <span style="font-size: 0.72rem; color: #10B981; font-weight: 600;">Fonte Amsi Pro Ultra</span>
+        </div>
+
+        <!-- Campo 1: Nome do Produto -->
+        <div class="form-group">
+          <label class="form-label" for="productName">
+            <span>Nome do Produto (abaixo de "SUPER PROMO")</span>
+            <span class="hint">Altera automaticamente</span>
+          </label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="productName" 
+              class="form-control" 
+              placeholder="Ex: Fralda Babysec Shortinho c/30" 
+              value="Fralda Babysec Shortinho c/30"
+              autocomplete="off"
+            >
+          </div>
+          
+          <!-- Chips com sugestões rápidas de farmácia -->
+          <div class="preset-chips">
+            <button class="chip-btn" data-prod="Fralda Babysec Shortinho c/30" data-price="128,99">Fralda Babysec</button>
+            <button class="chip-btn" data-prod="Shampoo Pantene Restauração 400ml" data-price="24,90">Shampoo Pantene</button>
+            <button class="chip-btn" data-prod="Desodorante Rexona Clinical 48g" data-price="21,50">Rexona Clinical</button>
+            <button class="chip-btn" data-prod="Vitamina C 1g Efervescente c/10" data-price="16,99">Vitamina C 1g</button>
+            <button class="chip-btn" data-prod="Protetor Solar FPS 50 Neutrogena" data-price="64,90">Protetor Solar</button>
+          </div>
+        </div>
+
+        <!-- Campo 2: Valor do Produto -->
+        <div class="form-group">
+          <label class="form-label" for="productPrice">
+            <span>Valor do Produto (dentro do shape)</span>
+            <span class="hint">Aceita vírgula ou ponto</span>
+          </label>
+          <div class="input-wrapper">
+            <span class="price-currency-tag">R$</span>
+            <input 
+              type="text" 
+              id="productPrice" 
+              class="form-control price-control price-control-padding" 
+              placeholder="128,99" 
+              value="128,99"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <!-- Ajustes Finos de Tipografia -->
+        <div class="tune-row">
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Tam. Fonte Produto</span>
+              <span id="productFontSizeVal">56px</span>
+            </div>
+            <input type="range" id="productFontSize" class="range-slider" min="36" max="85" value="56">
+          </div>
+          
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Tam. Fonte Preço</span>
+              <span id="priceFontSizeVal">260px</span>
+            </div>
+            <input type="range" id="priceFontSize" class="range-slider" min="160" max="340" value="260">
+          </div>
+        </div>
+
+        <div class="tune-row" style="margin-top: 10px; padding-top: 10px;">
+          <div class="slider-group" style="grid-column: span 2;">
+            <div class="slider-label">
+              <span>Ajuste Vertical dos Textos (Offset Y)</span>
+              <span id="textOffsetYVal">0px</span>
+            </div>
+            <input type="range" id="textOffsetY" class="range-slider" min="-50" max="50" value="0">
+          </div>
+        </div>
+
+        <div class="toggle-row" style="margin-top: 14px;">
+          <div class="toggle-label-group">
+            <span class="toggle-title">Auto-Ajustar Texto</span>
+            <span class="toggle-desc">Reduz tamanho automaticamente caso o nome seja longo</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="autoFitToggle" checked>
+            <span class="slider-round"></span>
+          </label>
+        </div>
+
+      </section>
+
+      <!-- Card: Opções de Impressão e Corte -->
+      <section class="card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="6" cy="6" r="3"></circle>
+              <circle cx="6" cy="18" r="3"></circle>
+              <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+              <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+              <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+            </svg>
+            Guias de Impressão
+          </h2>
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-label-group">
+            <span class="toggle-title">Linhas de Corte (Guilhotina)</span>
+            <span class="toggle-desc">Adiciona linhas pontilhadas de divisão na folha A4</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="cropMarksToggle" checked>
+            <span class="slider-round"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-label-group">
+            <span class="toggle-title">Margem Segura (5mm)</span>
+            <span class="toggle-desc">Evita cortes em impressoras convencionais de escritório</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="safeMarginToggle">
+            <span class="slider-round"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Card: Download PDF com Cores Originais -->
+      <section class="card export-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Exportar PDF
+          </h2>
+          <span style="font-size: 0.7rem; color: #00C4D6; font-weight: 700;">Cores Originais</span>
+        </div>
+
+        <div class="export-actions-grid">
+          
+          <!-- Botão Principal: 4 por Folha A4 (A5/Gôndola) -->
+          <button class="btn-primary" id="btnPdf4x" title="Gera PDF com 4 panfletos na folha A4 (2x2)">
+            <div class="btn-content">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <div>
+                <span class="btn-text-main">4 Panfletos por Folha A4</span>
+                <span class="btn-text-sub">Grade 2x2 para Gôndola • Cores Originais</span>
+              </div>
+            </div>
+            <span class="btn-tag">A5 / 4x</span>
+          </button>
+
+          <!-- Botão: A4 Folha Inteira -->
+          <button class="btn-secondary btn-outline-gold" id="btnPdfA4" title="Gera PDF com 1 panfleto grande ocupando toda a folha A4">
+            <div class="btn-content">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              <div>
+                <span class="btn-text-main">A4 (Folha Inteira - 1x)</span>
+                <span class="btn-text-sub">1 Panfleto Grande por página A4</span>
+              </div>
+            </div>
+            <span class="btn-tag" style="color: #FFD166;">1x A4</span>
+          </button>
+
+          <!-- Botão: 2 por Folha A4 (A5 Real) -->
+          <button class="btn-secondary" id="btnPdf2x" title="Gera PDF com 2 panfletos tamanho A5 por folha A4">
+            <div class="btn-content">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="9" height="16" rx="1"></rect>
+                <rect x="13" y="4" width="9" height="16" rx="1"></rect>
+              </svg>
+              <div>
+                <span class="btn-text-main">2 Panfletos por Folha A4 (A5)</span>
+                <span class="btn-text-sub">Metade de A4 (148 x 210mm)</span>
+              </div>
+            </div>
+            <span class="btn-tag">2x A5</span>
+          </button>
+
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- Right Column: Interactive Live Preview -->
+    <section class="preview-panel">
+      
+      <!-- Toolbar: View Switchers & Meta -->
+      <div class="preview-toolbar">
+        <div class="tab-group">
+          <button class="tab-btn active" data-mode="single">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            </svg>
+            Panfleto Individual
+          </button>
+          <button class="tab-btn" data-mode="a4-4x">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            Folha A4 (4 Panfletos)
+          </button>
+          <button class="tab-btn" data-mode="a4-full">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="2" width="18" height="20" rx="1"></rect>
+            </svg>
+            Folha A4 (1 Panfleto)
+          </button>
+          <button class="tab-btn" data-mode="a4-2x">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="9" height="16" rx="1"></rect>
+              <rect x="13" y="4" width="9" height="16" rx="1"></rect>
+            </svg>
+            Folha A4 (2 Panfletos)
+          </button>
+        </div>
+
+        <div class="preview-meta">
+          <span class="meta-pill">
+            <span class="dot"></span>
+            Canvas HD: 1448 x 2048 px
+          </span>
+          <span class="meta-pill" style="color: #00AEEF;">
+            Cores: Originais
+          </span>
+        </div>
+      </div>
+
+      <!-- Live Canvas Viewport -->
+      <div class="canvas-viewport" id="canvasViewport">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer Information -->
+  <footer class="footer-bar">
+    WellFarma Link Gôndolas • Sistema de Geração de Panfletos de Farmácia • Fonte Amsi Pro Ultra • Cores Originais
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-msg" id="toastMsg">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <span id="toastText">Pronto</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/template_hd_data.js"></script>
+  <script src="assets/template_data.js"></script>
+  <script src="js/cmyk-pdf.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
